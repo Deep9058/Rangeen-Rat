@@ -1,0 +1,16 @@
+VERCEL DEPLOYMENT CHECKLIST
+
+1. Push this folder to GitHub.
+2. Import the repo into Vercel. Keep the repository root as the project root.
+3. Add environment variables:
+   RAZORPAY_KEY_ID
+   RAZORPAY_KEY_SECRET
+   ADMIN_API_TOKEN
+   SPRING_DATASOURCE_URL
+   SPRING_DATASOURCE_USERNAME
+   SPRING_DATASOURCE_PASSWORD
+   SPRING_JPA_HIBERNATE_DDL_AUTO=update
+4. Deploy.
+5. Test /api/health and /api/passes.
+6. Test Razorpay with test keys.
+7. After successful testing, replace test keys with live keys.

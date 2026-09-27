@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rangeen Raat — Dandiya Night</title>
+<meta name="description" content="Rangeen Raat — a Dandiya Night celebration with live dhol, garba, traditional and fusion dandiya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<style>
+:root{
+  --night:#10071f;
+  --night2:#1b0a30;
+  --plum:#35103f;
+  --gold:#e8a33d;
+  --gold2:#ffd45f;
+  --pink:#d6336c;
+  --pink2:#ff4d8d;
+  --cream:#fff8ed;
+  --muted:#d2bfdc;
+  --line:rgba(255,248,237,.15);
+  --green:#25d366;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{
+  margin:0;background:
+  radial-gradient(circle at 10% 15%,rgba(214,51,108,.10),transparent 28%),
+  radial-gradient(circle at 90% 70%,rgba(232,163,61,.08),transparent 30%),
+  var(--night);
+  color:var(--cream);font-family:"Work Sans",sans-serif;line-height:1.55;
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+h1,h2,h3,.display{font-family:"Kalnia",serif}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.section{padding:92px 0}
+.kicker{
+  color:var(--gold2);font-size:.78rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.18em;
+}
+.section-title{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:10px 0 16px}
+.section-lead{color:var(--muted);max-width:680px;margin:0 0 42px}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(16,7,31,.82);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line)
+}
+.nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Kalnia",serif;color:var(--gold2);font-weight:700;font-size:1.25rem;text-decoration:none}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.92rem}
+.nav-links a:hover{color:var(--cream)}
+.nav-btn,.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border:0;border-radius:999px;text-decoration:none;cursor:pointer;
+  font-weight:800;transition:.2s transform,.2s box-shadow
+}
+.nav-btn{background:var(--gold);color:var(--night);padding:10px 18px;font-size:.88rem}
+.btn{padding:15px 25px;background:linear-gradient(135deg,var(--gold2),var(--gold),var(--pink));color:#16091f;box-shadow:0 14px 32px rgba(214,51,108,.25)}
+.btn:hover,.nav-btn:hover{transform:translateY(-2px)}
+.btn.secondary{background:transparent;color:var(--cream);border:1px solid var(--line);box-shadow:none}
+
+/* HERO */
+.hero{position:relative;padding:64px 0 80px;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(214,51,108,.22),transparent 35%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 1px,transparent 1px 8px);
+  opacity:.65
+}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+.hero-copy h1{
+  font-size:clamp(3.5rem,8vw,7rem);line-height:.86;margin:14px 0 12px;
+  color:var(--gold2);
+  text-shadow:0 8px 35px rgba(232,163,61,.18)
+}
+.hero-copy h1 span{display:block;color:var(--pink2)}
+.hero-sub{font-family:"Kalnia",serif;font-size:clamp(1.2rem,3vw,1.75rem);margin:0 0 24px}
+.hero-text{color:var(--muted);max-width:590px;font-size:1.02rem}
+.event-pills{display:grid;grid-template-columns:repeat(3,1fr);margin:28px 0 30px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.035)}
+.pill{padding:17px 16px;border-right:1px dashed var(--line)}
+.pill:last-child{border-right:0}
+.pill small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:.67rem;margin-bottom:4px}
+.pill strong{font-size:.92rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.poster-wrap{
+  position:relative;max-width:500px;margin-left:auto;
+  filter:drop-shadow(0 28px 45px rgba(0,0,0,.48))
+}
+.poster-wrap:before,.poster-wrap:after{
+  content:"";position:absolute;border:1px solid rgba(255,212,95,.45);
+  border-radius:22px;pointer-events:none
+}
+.poster-wrap:before{inset:-12px;transform:rotate(2deg)}
+.poster-wrap:after{inset:-7px;transform:rotate(-1deg)}
+.poster{
+  position:relative;border-radius:18px;overflow:hidden;
+  border:3px solid var(--gold);background:#140821
+}
+.poster img{width:100%;height:auto}
+
+/* FLOATING DECOR */
+.spark{position:absolute;width:8px;height:8px;background:var(--gold2);border-radius:50%;box-shadow:0 0 20px var(--gold)}
+.s1{left:5%;top:18%}.s2{right:6%;top:30%;width:5px;height:5px}.s3{left:44%;bottom:8%;width:6px;height:6px}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  padding:28px;border:1px solid var(--line);border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+}
+.icon{
+  width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+  color:var(--gold2);font-size:1.45rem;background:rgba(232,163,61,.1);
+  border:1px solid rgba(232,163,61,.3);margin-bottom:20px
+}
+.card h3{font-size:1.25rem;margin:0 0 8px;color:var(--gold2)}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+
+/* TIMELINE */
+.dark-section{background:linear-gradient(180deg,var(--night2),#160927)}
+.timeline{position:relative;max-width:820px;margin:auto}
+.timeline:before{content:"";position:absolute;left:12px;top:0;bottom:0;width:1px;background:var(--line)}
+.t-item{position:relative;padding:0 0 30px 48px}
+.dot{position:absolute;left:6px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(232,163,61,.12)}
+.time{color:var(--gold2);font-weight:800;font-size:.86rem}
+.t-item h3{font-family:"Work Sans",sans-serif;font-size:1.05rem;margin:4px 0}
+.t-item p{margin:0;color:var(--muted);font-size:.92rem}
+
+/* PASSES */
+.passes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pass{
+  border:1px solid var(--line);border-radius:24px;padding:30px;
+  background:linear-gradient(155deg,var(--plum),var(--night2));
+  display:flex;flex-direction:column;min-height:360px
+}
+.pass.featured{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 24px 55px rgba(232,163,61,.13)}
+.badge{align-self:flex-start;background:var(--gold);color:var(--night);font-size:.68rem;font-weight:900;padding:5px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.08em}
+.pass h3{color:var(--gold2);font-size:1.35rem;margin:15px 0 4px}
+.price{font-family:"Kalnia",serif;font-size:2.7rem;font-weight:700}
+.price span{font-family:"Work Sans",sans-serif;font-size:.82rem;color:var(--muted)}
+.perks{list-style:none;padding:0;margin:18px 0 24px;color:var(--muted);font-size:.92rem}
+.perks li{padding:9px 0;border-top:1px dashed var(--line)}
+.perks li:first-child{border-top:0}
+.qty{margin-top:auto;display:flex;align-items:center;justify-content:space-between}
+.qty-controls{display:flex;align-items:center;gap:12px}
+.qty-btn{
+  width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+  background:transparent;color:var(--cream);cursor:pointer;font-size:1.1rem
+}
+.qty-val{min-width:20px;text-align:center;font-weight:800}
+
+/* BOOKING */
+.booking-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;align-items:start}
+.box{
+  border:1px solid var(--line);border-radius:22px;padding:28px;
+  background:rgba(255,255,255,.035)
+}
+.box h3{margin:0 0 16px;color:var(--gold2);font-size:1.2rem}
+.summary-line{display:flex;justify-content:space-between;gap:20px;padding:10px 0;color:var(--muted);font-size:.94rem}
+.total{border-top:1px solid var(--line);margin-top:8px;padding-top:17px;color:var(--cream);font-size:1.15rem;font-weight:800}
+.field{margin-bottom:15px}
+.field label{display:block;color:var(--muted);font-size:.83rem;margin-bottom:6px}
+.field input{
+  width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line);
+  background:rgba(255,255,255,.045);color:var(--cream);font:inherit
+}
+.field input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.pay{width:100%;margin-top:5px}
+.note{color:var(--muted);font-size:.78rem;margin:12px 0 0}
+.error{display:none;color:#ff8db6;font-size:.82rem;margin:0 0 12px}
+.confirm{display:none;text-align:center}
+.confirm h3{font-size:1.5rem}
+.ref{display:inline-block;font-family:monospace;padding:8px 12px;border-radius:8px;background:rgba(0,0,0,.25);margin:8px 0 18px}
+.wa{display:inline-flex;background:var(--green);color:#06200f;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:800}
+
+/* ACCOUNT / BOOKINGS */
+.account-actions{display:flex;align-items:center;gap:10px}
+.login-chip{display:none;color:var(--cream);font-size:.82rem;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
+.login-chip.show{display:inline-flex}
+.account-btn{border:1px solid var(--gold);color:var(--gold2);background:transparent;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer}
+.booking-history{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+.booking-card{border:1px solid var(--line);border-radius:18px;padding:22px;background:linear-gradient(155deg,var(--plum),var(--night2))}
+.booking-card-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.booking-ref{font-family:monospace;color:var(--gold2);font-weight:800}
+.status{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:.7rem;font-weight:900;letter-spacing:.06em}
+.status.paid{background:rgba(72,214,139,.14);color:#68e5a0}
+.status.pending{background:rgba(232,163,61,.14);color:var(--gold2)}
+.status.failed{background:rgba(255,80,130,.12);color:#ff8db6}
+.booking-card h3{margin:12px 0 4px;font-size:1.1rem}
+.booking-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
+.booking-meta div{padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.035);font-size:.82rem}
+.booking-meta small{display:block;color:var(--muted);margin-bottom:3px}
+.empty-bookings{text-align:center;border:1px dashed var(--line);border-radius:18px;padding:35px;color:var(--muted);margin-top:25px}
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop.open{display:flex}
+.login-modal{width:min(100%,440px);border:1px solid var(--line);border-radius:22px;background:var(--night2);padding:28px;box-shadow:0 25px 80px rgba(0,0,0,.45)}
+.login-modal h2{margin:0 0 8px;color:var(--gold2)}
+.login-modal p{color:var(--muted);font-size:.9rem}
+.login-close{float:right;background:none;border:0;color:var(--muted);font-size:1.4rem;cursor:pointer}
+.account-bar{display:none;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.035);font-size:.88rem}
+.account-bar.show{display:flex}
+@media(max-width:900px){.booking-history{grid-template-columns:1fr}}
+@media(max-width:650px){.login-chip{display:none!important}.booking-meta{grid-template-columns:1fr}.account-bar{align-items:flex-start;flex-direction:column}}
+
+/* FAQ */
+.faq{max-width:820px;margin:auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  width:100%;background:none;border:0;color:var(--cream);text-align:left;
+  padding:19px 0;font:700 1rem "Work Sans";display:flex;justify-content:space-between;cursor:pointer
+}
+.plus{color:var(--gold);font-size:1.3rem;transition:.2s}
+.faq-item.open .plus{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.faq-a p{color:var(--muted);margin:0;padding:0 0 20px;font-size:.92rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:42px 0;text-align:center}
+footer .brand{display:block;margin-bottom:8px}
+footer p{color:var(--muted);font-size:.82rem;margin:4px 0}
+.footer-links{display:flex;justify-content:center;gap:18px;margin-top:14px}
+.footer-links a{color:var(--gold2);text-decoration:none;font-size:.84rem}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .poster-wrap{margin:10px auto 0;max-width:520px}
+  .cards,.passes{grid-template-columns:1fr}
+  .booking-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .wrap{width:min(100% - 28px,1120px)}
+  .section{padding:68px 0}
+  .nav-inner{height:66px}
+  .nav-links a:not(.nav-btn){display:none}
+  .hero{padding:42px 0 58px}
+  .hero-copy h1{font-size:clamp(3.2rem,18vw,5rem)}
+  .event-pills{grid-template-columns:1fr}
+  .pill{border-right:0;border-bottom:1px dashed var(--line)}
+  .pill:last-child{border-bottom:0}
+  .hero-actions .btn{width:100%}
+}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">Rangeen Raat</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#experience">Experience</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#passes">Passes</a>
+      <a href="#my-bookings">My Bookings</a>
+      <span class="account-actions">
+        <span class="login-chip" id="login-chip"></span>
+        <button class="account-btn" id="account-btn" type="button" onclick="openLogin()">Login</button>
+      </span>
+      <a class="nav-btn" href="#book">Book Passes</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="kicker">Live Dhol · Garba Circle · Dandiya Raas</div>
+      <h1>Rangeen <span>Raat</span></h1>
+      <div class="hero-sub">A Dandiya Night Celebration</div>
+      <p class="hero-text">Nine nights of Navratri deserve one unforgettable evening of colour, dhol and dandiya. Come dressed in your favourite traditional or fusion look and celebrate with us.</p>
+
+      <div class="event-pills">
+        <div class="pill"><small>Date</small><strong>Saturday, 17 Oct 2026</strong></div>
+        <div class="pill"><small>Time</small><strong>7:00 PM – 12:00 AM</strong></div>
+        <div class="pill"><small>Venue</small><strong>The Grand Lawns, Fatehabad Road, Agra</strong></div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn" href="#passes">Book Your Pass</a>
+        <a class="btn secondary" href="#experience">Explore Event</a>
+      </div>
+    </div>
+
+    <div class="poster-wrap">
+      <div class="poster"><img src="poster.png" alt="Dandiya night event poster"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="kicker">The experience</div>
+    <h2 class="section-title">Colour. Rhythm. Celebration.</h2>
+    <p class="section-lead">Everything you need for a lively Navratri evening — from the first dhol beat to the final dandiya round.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="icon">🥁</div>
+        <h3>Live Dhol & Garba Circle</h3>
+        <p>A live dhol ensemble sets the beat while the garba circle grows through the evening. Join whenever you're ready.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🪄</div>
+        <h3>Traditional & Fusion Dandiya</h3>
+        <p>Rounds move from classic Gujarati raas to fusion Bollywood dandiya, with room on the floor for every skill level.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🍢</div>
+        <h3>Food Stalls & Best-Dressed Prizes</h3>
+        <p>Street-food stalls stay open all night, with prizes for the best traditional and fusion outfits.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-section" id="schedule">
+  <div class="wrap">
+    <div class="kicker">Event flow</div>
+    <h2 class="section-title">How the evening unfolds</h2>
+    <p class="section-lead">Plan your night around the main dandiya rounds and performances.</p>
+    <div class="timeline">
+      <div class="t-item"><span class="dot"></span><div class="time">7:00 PM</div><h3>Gates open & welcome tilak</h3><p>Entry, wristbands and a welcome tikka at the door. Dandiya sticks are available to buy if you didn't bring your own.</p></div>
+      <div class="t-item"><span class="dot"></span><div class="time">7:45 PM</div><h3>Garba warm-up circle</h3><p>A gentle warm-up circle for newcomers, led by instructors before the main floor opens.</p></div>
+      <div class="t-item"><span class="dot"></span><div class="time">8:30 PM</div><h3>Live dhol performance</h3><p>The dhol ensemble takes the stage to open the main dandiya raas.</p></div>
+      <div class="t-item"><span class="dot"></span><div class="time">9:00 PM</div><h3>Dandiya Raas — main floor</h3><p>Non-stop rounds of traditional and fusion dandiya across the full floor.</p></div>
+      <div class="t-item"><span class="dot"></span><div class="time">11:30 PM</div><h3>Best-dressed announcement</h3><p>Prizes for best traditional look, best fusion look and best couple outfit.</p></div>
+      <div class="t-item"><span class="dot"></span><div class="time">12:00 AM</div><h3>Evening closes</h3><p>Gates close. Thank you for celebrating with us — see you next Navratri!</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="passes">
+  <div class="wrap">
+    <div class="kicker">Entry passes</div>
+    <h2 class="section-title">Choose your pass</h2>
+    <p class="section-lead">Select your pass quantity and your order summary will update automatically.</p>
+    <div class="passes" id="passes-grid"></div>
+  </div>
+</section>
+
+<section class="section dark-section" id="book">
+  <div class="wrap">
+    <div class="kicker">Secure checkout</div>
+    <h2 class="section-title">Complete your booking</h2>
+    <div class="booking-grid">
+      <div class="box">
+        <h3>Order summary</h3>
+        <div id="summary-lines"><p class="note" style="margin-top:0">Choose a pass above to see your total here.</p></div>
+        <div class="summary-line total" id="summary-total" style="display:none"><span>Total</span><span id="total-amount">₹0</span></div>
+      </div>
+
+      <div class="box">
+        <div id="booking-form">
+          <h3>Your details</h3>
+          <div class="account-bar" id="booking-account-bar">
+            <span id="booking-account-text">Login with your mobile number to continue.</span>
+            <button class="account-btn" type="button" onclick="openLogin()">Change number</button>
+          </div>
+          <div class="field"><label for="fullname">Full name</label><input id="fullname" type="text" placeholder="Your name" autocomplete="name"></div>
+          <div class="field"><label for="phone">Phone (WhatsApp preferred)</label><input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel"></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" autocomplete="email"></div>
+          <p class="error" id="form-error">Please select at least one pass, enter your name and a valid 10-digit Indian mobile number.</p>
+          <button class="btn pay" id="pay-btn">Pay & Confirm Booking</button>
+          <p class="note">Secure payment flow: Spring Boot creates the Razorpay order and verifies the payment signature. Configure Razorpay keys in the backend environment.</p>
+        </div>
+
+        <div class="confirm" id="confirm-box">
+          <h3>You're on the list! 🎉</h3>
+          <p>Your booking is confirmed. Save your reference ID and bring it (or your payment confirmation) to the entry desk.</p>
+          <div class="ref" id="confirm-id"></div><br>
+          <a class="wa" id="wa-link" href="#" target="_blank" rel="noopener">Send booking details on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-section" id="my-bookings">
+  <div class="wrap">
+    <div class="kicker">Your tickets</div>
+    <h2 class="section-title">My Bookings</h2>
+    <p class="section-lead" id="booking-history-lead">Login with your mobile number to view every ticket booked using that number.</p>
+    <div id="booking-history"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap faq">
+    <div class="kicker">Need to know</div>
+    <h2 class="section-title">Good to know</h2>
+    <div id="faq"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">Rangeen Raat</span>
+    <p>Organised by Team Rangeen Raat · Agra</p>
+    <p>WhatsApp: +91 98765 43210 · rangeenraat.events@example.com</p>
+    <div class="footer-links"><a href="#top">Back to top ↑</a><a href="#book">Book a pass</a></div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="login-modal" onclick="closeLoginOnBackdrop(event)">
+  <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <button class="login-close" type="button" onclick="closeLogin()" aria-label="Close">×</button>
+    <h2 id="login-title">Login to your tickets</h2>
+    <p>Use the same mobile number you use while booking. Your bookings will always be linked to this number.</p>
+    <div class="field">
+      <label for="login-phone">Mobile number</label>
+      <input id="login-phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel">
+    </div>
+    <p class="error" id="login-error"></p>
+    <button class="btn pay" type="button" id="login-submit">Continue</button>
+    <p class="note">This version uses phone-number login. For production, OTP verification should be enabled before exposing booking history.</p>
+  </div>
+</div>
+
+<script>
+const ACCOUNT_KEY = "rangeenRaatCustomerPhone";
+let loggedInPhone = localStorage.getItem(ACCOUNT_KEY) || "";
+
+function validPhone(phone){ return /^[6-9]\d{9}$/.test(phone); }
+function maskPhone(phone){ return phone ? phone.slice(0,2) + "••••••" + phone.slice(-2) : ""; }
+function openLogin(){
+  const modal=document.getElementById("login-modal");
+  document.getElementById("login-phone").value=loggedInPhone;
+  document.getElementById("login-error").style.display="none";
+  modal.classList.add("open");
+  setTimeout(()=>document.getElementById("login-phone").focus(),50);
+}
+function closeLogin(){ document.getElementById("login-modal").classList.remove("open"); }
+function closeLoginOnBackdrop(e){ if(e.target.id==="login-modal") closeLogin(); }
+function updateAccountUI(){
+  const chip=document.getElementById("login-chip");
+  const btn=document.getElementById("account-btn");
+  const bar=document.getElementById("booking-account-bar");
+  const text=document.getElementById("booking-account-text");
+  if(loggedInPhone){
+    chip.textContent="+91 "+maskPhone(loggedInPhone); chip.classList.add("show");
+    btn.textContent="Logout"; btn.onclick=logout;
+    bar.classList.add("show");
+    text.textContent="Booking with +91 " + maskPhone(loggedInPhone);
+    document.getElementById("phone").value=loggedInPhone;
+    document.getElementById("phone").readOnly=true;
+  }else{
+    chip.classList.remove("show"); btn.textContent="Login"; btn.onclick=openLogin;
+    bar.classList.remove("show");
+    document.getElementById("phone").readOnly=false;
+  }
+}
+function logout(){
+  localStorage.removeItem(ACCOUNT_KEY);
+  loggedInPhone="";
+  updateAccountUI();
+  renderBookingHistory([]);
+  document.getElementById("booking-history-lead").textContent="Login with your mobile number to view every ticket booked using that number.";
+}
+async function loginWithPhone(){
+  const phone=document.getElementById("login-phone").value.trim();
+  const error=document.getElementById("login-error");
+  if(!validPhone(phone)){ error.textContent="Enter a valid 10-digit Indian mobile number."; error.style.display="block"; return; }
+  try{
+    const r=await fetch("/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({phone})});
+    const data=await r.json();
+    if(!r.ok || !data.success) throw new Error(data.message || "Unable to login.");
+    loggedInPhone=data.phone;
+    localStorage.setItem(ACCOUNT_KEY,loggedInPhone);
+    closeLogin();
+    updateAccountUI();
+    await loadBookings();
+    document.getElementById("my-bookings").scrollIntoView({behavior:"smooth"});
+  }catch(e){ error.textContent=e.message; error.style.display="block"; }
+}
+document.getElementById("login-submit").addEventListener("click",loginWithPhone);
+document.getElementById("login-phone").addEventListener("keydown",e=>{if(e.key==="Enter") loginWithPhone();});
+
+async function loadBookings(){
+  const container=document.getElementById("booking-history");
+  if(!loggedInPhone){ renderBookingHistory([]); return; }
+  container.innerHTML='<div class="empty-bookings">Loading your tickets…</div>';
+  try{
+    const r=await fetch(`/api/bookings?phone=${encodeURIComponent(loggedInPhone)}`);
+    const data=await r.json();
+    if(!r.ok || !data.success) throw new Error(data.message || "Unable to load bookings.");
+    renderBookingHistory(data.bookings || []);
+    document.getElementById("booking-history-lead").textContent=(data.bookings||[]).length
+      ? "All bookings made with +91 " + maskPhone(loggedInPhone) + " are linked to this account."
+      : "No bookings found for +91 " + maskPhone(loggedInPhone) + ". Book a pass and it will appear here automatically.";
+  }catch(e){ container.innerHTML=`<div class="empty-bookings">${e.message}</div>`; }
+}
+function renderBookingHistory(bookings){
+  const container=document.getElementById("booking-history");
+  if(!loggedInPhone){
+    container.innerHTML='<div class="empty-bookings"><p>Login with your mobile number to see your previously booked tickets.</p><button class="account-btn" type="button" onclick="openLogin()">Login to view tickets</button></div>';
+    return;
+  }
+  if(!bookings.length){
+    container.innerHTML='<div class="empty-bookings"><p>You have no previous bookings with this number.</p><a class="btn" href="#passes">Book Your First Pass</a></div>';
+    return;
+  }
+  container.innerHTML='<div class="booking-history">'+bookings.map(renderBookingCard).join('')+'</div>';
+}
+function renderBookingCard(b){
+  let items=[];
+  try{ items=JSON.parse(b.itemsJson||"[]"); }catch(e){}
+  const passes=items.map(i=>`${i.passName||i.passId} × ${i.quantity}`).join(", ") || "Ticket booking";
+  const status=(b.paymentStatus||"PENDING").toLowerCase();
+  const date=b.createdAt ? new Date(b.createdAt).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"}) : "—";
+  const amount=`₹${((b.amountPaise||0)/100).toLocaleString("en-IN")}`;
+  return `<article class="booking-card">
+    <div class="booking-card-head"><div class="booking-ref">${b.bookingReference}</div><span class="status ${status.includes("paid")?"paid":status.includes("failed")?"failed":"pending"}">${b.paymentStatus}</span></div>
+    <h3>${passes}</h3>
+    <div class="booking-meta">
+      <div><small>Booked on</small>${date}</div>
+      <div><small>Total</small>${amount}</div>
+      <div><small>Mobile</small>+91 ${maskPhone(b.phone)}</div>
+      <div><small>Ticket status</small>${b.paymentStatus === "PAID" ? "Confirmed" : b.paymentStatus}</div>
+    </div>
+  </article>`;
+}
+
+const EVENT = {
+  name: "Rangeen Raat — Dandiya Night",
+  organizerWhatsApp: "919876543210"
+};
+
+const PASSES = [
+  {id:"solo", name:"Solo Pass", price:499, perks:["1 entry","Welcome tikka","Access to all performances"], featured:false},
+  {id:"couple", name:"Couple Pass", price:899, perks:["2 entries","Welcome tikka for both","Priority floor access"], featured:true},
+  {id:"group", name:"Group Pass (4)", price:1699, perks:["4 entries","Reserved seating area","1 dandiya stick set free"], featured:false}
+];
+
+const FAQS = [
+  {q:"Is there a dress code?", a:"Traditional or fusion Indian wear is encouraged (and eligible for the best-dressed prizes), but it isn't mandatory for entry."},
+  {q:"Can I bring my own dandiya sticks?", a:"Yes — you're welcome to bring your own. Sticks are also available to buy at the entry desk."},
+  {q:"Are kids allowed?", a:"Yes, children under 8 enter free with a paying adult; please add one Solo Pass per accompanying adult."},
+  {q:"Is parking available?", a:"Free parking is available on the venue grounds on a first-come basis."},
+  {q:"What if I don't receive a confirmation?", a:"Keep your Razorpay payment confirmation (SMS or email) — it's valid for entry even if the WhatsApp message doesn't go through."}
+];
+
+const qty = {};
+PASSES.forEach(p => qty[p.id] = 0);
+
+function renderPasses(){
+  document.getElementById("passes-grid").innerHTML = PASSES.map(p => `
+    <article class="pass ${p.featured ? "featured" : ""}">
+      ${p.featured ? '<span class="badge">Most popular</span>' : ''}
+      <h3>${p.name}</h3>
+      <div class="price">₹${p.price}<span> / pass</span></div>
+      <ul class="perks">${p.perks.map(x => `<li>✓ ${x}</li>`).join("")}</ul>
+      <div class="qty">
+        <span class="note" style="margin:0">Quantity</span>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty('${p.id}',-1)" aria-label="Decrease ${p.name}">−</button>
+          <span class="qty-val" id="qty-${p.id}">0</span>
+          <button class="qty-btn" onclick="changeQty('${p.id}',1)" aria-label="Increase ${p.name}">+</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function changeQty(id, delta){
+  qty[id] = Math.max(0, Math.min(20, qty[id] + delta));
+  document.getElementById("qty-"+id).textContent = qty[id];
+  renderSummary();
+}
+
+function renderSummary(){
+  const active = PASSES.filter(p => qty[p.id] > 0);
+  const lines = document.getElementById("summary-lines");
+  const totalRow = document.getElementById("summary-total");
+
+  if(!active.length){
+    lines.innerHTML = '<p class="note" style="margin-top:0">Choose a pass above to see your total here.</p>';
+    totalRow.style.display = "none";
+    return;
+  }
+
+  let total = 0;
+  lines.innerHTML = active.map(p => {
+    const lineTotal = p.price * qty[p.id];
+    total += lineTotal;
+    return `<div class="summary-line"><span>${p.name} × ${qty[p.id]}</span><span>₹${lineTotal}</span></div>`;
+  }).join("");
+  document.getElementById("total-amount").textContent = "₹"+total;
+  totalRow.style.display = "flex";
+}
+
+function currentTotal(){
+  return PASSES.reduce((sum,p) => sum + p.price * qty[p.id], 0);
+}
+function ticketSummaryText(){
+  return PASSES.filter(p => qty[p.id] > 0).map(p => `${p.name} x${qty[p.id]}`).join(", ");
+}
+function genBookingId(){
+  return "RR-" + Date.now().toString(36).toUpperCase();
+}
+
+function renderFAQ(){
+  document.getElementById("faq").innerHTML = FAQS.map((f,i) => `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-q" onclick="toggleFaq(${i})">${f.q}<span class="plus">+</span></button>
+      <div class="faq-a" id="faq-a-${i}"><p>${f.a}</p></div>
+    </div>
+  `).join("");
+}
+function toggleFaq(i){
+  const item = document.getElementById("faq-"+i);
+  const ans = document.getElementById("faq-a-"+i);
+  const open = item.classList.contains("open");
+  document.querySelectorAll(".faq-item").forEach(x => x.classList.remove("open"));
+  document.querySelectorAll(".faq-a").forEach(x => x.style.maxHeight = null);
+  if(!open){
+    item.classList.add("open");
+    ans.style.maxHeight = ans.scrollHeight + 30 + "px";
+  }
+}
+
+document.getElementById("pay-btn").addEventListener("click", async () => {
+  const name = document.getElementById("fullname").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const error = document.getElementById("form-error");
+
+  if(!loggedInPhone){
+    error.textContent = "Please login with your mobile number before booking.";
+    error.style.display = "block";
+    openLogin();
+    return;
+  }
+  if(currentTotal() <= 0 || !name || phone !== loggedInPhone || !/^[6-9]\d{9}$/.test(phone)){
+    error.textContent = "Please select a pass, enter your name, and use the mobile number linked to your account.";
+    error.style.display = "block";
+    return;
+  }
+
+  error.style.display = "none";
+  const button = document.getElementById("pay-btn");
+  button.disabled = true;
+  button.textContent = "Creating secure order...";
+
+  try {
+    const items = PASSES.filter(p => qty[p.id] > 0)
+      .map(p => ({passId:p.id, quantity:qty[p.id]}));
+
+    const r = await fetch("/api/payment/create-order", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({name, phone, email, items})
+    });
+    const order = await r.json();
+    if(!r.ok) throw new Error(order.message || "Unable to create payment order.");
+    if(typeof Razorpay === "undefined") throw new Error("Razorpay Checkout did not load.");
+
+    const options = {
+      key:order.keyId,
+      amount:order.amount,
+      currency:order.currency,
+      name:order.eventName,
+      description:ticketSummaryText(),
+      order_id:order.orderId,
+      prefill:{name,email,contact:phone},
+      theme:{color:"#E8A33D"},
+      handler:async response => {
+        button.textContent = "Verifying payment...";
+        await verifyPayment(response, order.bookingId);
+      },
+      modal:{ondismiss:()=>{
+        button.disabled=false;
+        button.textContent="Pay & Confirm Booking";
+      }}
+    };
+
+    const rz = new Razorpay(options);
+    rz.on("payment.failed", response => {
+      button.disabled=false;
+      button.textContent="Pay & Confirm Booking";
+      alert("Payment failed: " + ((response.error && response.error.description) || "Please try again."));
+    });
+    rz.open();
+  } catch(e) {
+    button.disabled=false;
+    button.textContent="Pay & Confirm Booking";
+    error.textContent=e.message || "Unable to start payment.";
+    error.style.display="block";
+  }
+});
+
+async function verifyPayment(response, bookingId){
+  try {
+    const r = await fetch("/api/payment/verify", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        bookingId:String(bookingId),
+        razorpayOrderId:response.razorpay_order_id,
+        razorpayPaymentId:response.razorpay_payment_id,
+        razorpaySignature:response.razorpay_signature
+      })
+    });
+    const data = await r.json();
+    if(!r.ok || !data.success) throw new Error(data.message || "Payment verification failed.");
+    showConfirmation(response.razorpay_payment_id, data.customerName, data.phone, data.bookingReference);
+  } catch(e) {
+    const button=document.getElementById("pay-btn");
+    button.disabled=false;
+    button.textContent="Pay & Confirm Booking";
+    alert(e.message || "Payment verification failed.");
+  }
+}
+
+function showConfirmation(paymentId, name, phone, bookingReference){
+  document.getElementById("booking-form").style.display="none";
+  document.getElementById("confirm-box").style.display="block";
+  document.getElementById("confirm-id").textContent="Booking Ref: "+bookingReference;
+  const waText=encodeURIComponent(
+    `New Dandiya Night booking\nName: ${name}\nPhone: ${phone}\nPasses: ${ticketSummaryText()}\nAmount: ₹${currentTotal()}\nBooking Ref: ${bookingReference}\nPayment ID: ${paymentId}`
+  );
+  document.getElementById("wa-link").href=`https://wa.me/${EVENT.organizerWhatsApp}?text=${waText}`;
+  loadBookings();
+}
+
+renderPasses();
+renderSummary();
+renderFAQ();
+updateAccountUI();
+loadBookings();
+</script>
+</body>
+</html>
